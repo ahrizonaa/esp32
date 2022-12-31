@@ -1,5 +1,4 @@
 #include <WiFi.h>
-#include <HTTPClient.h>
 #include <ArduinoWebsockets.h>
 #include <ArduinoJson.h>
 #include "WiFiCredentials.h"

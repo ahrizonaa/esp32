@@ -1,15 +1,8 @@
-/**********************************************************************
-  Filename    : WiFi Station
-  Description : Connect to your router using ESP32
-  Auther      : www.freenove.com
-  Modification: 2020/07/11
-**********************************************************************/
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoWebsockets.h>
-
-const char *ssid_Router = "PrettyLisa";       //Enter the router name
-const char *password_Router = "Kawaiisa69!";  //Enter the router password
+#include <ArduinoJson.h>
+#include "WiFiCredentials.h"
 
 using namespace websockets;
 
@@ -44,8 +37,8 @@ void setup() {
   Serial.begin(115200);
   delay(2000);
   Serial.println("Setup start");
-  WiFi.begin(ssid_Router, password_Router);
-  Serial.println(String("Connecting to ") + ssid_Router);
+  WiFi.begin(SSID, PASS);
+  Serial.println(String("Connecting to ") + SSID);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -84,7 +77,7 @@ void loop() {
   //   http.begin(serverPath.c_str());
 
   //   // If you need Node-RED/server authentication, insert user and password below
-  //   //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
+  //   //http.setAuthorization("REPLAC_EWITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
 
   //   // Send HTTP GET request
   //   int httpResponseCode = http.GET();

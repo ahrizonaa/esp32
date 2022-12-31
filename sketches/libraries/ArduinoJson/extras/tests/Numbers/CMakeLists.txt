@@ -2,10 +2,7 @@
 # Copyright © 2014-2022, Benoit BLANCHON
 # MIT License
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED OFF)
-
-add_executable(NumbersTests
+add_executable(NumbersTests 
 	convertNumber.cpp
 	parseFloat.cpp
 	parseDouble.cpp

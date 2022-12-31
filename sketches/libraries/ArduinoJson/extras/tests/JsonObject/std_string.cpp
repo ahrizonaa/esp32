@@ -5,10 +5,9 @@
 #include <ArduinoJson.h>
 #include <catch.hpp>
 
-static void eraseString(std::string& str) {
-  char* p = const_cast<char*>(str.c_str());
-  while (*p)
-    *p++ = '*';
+static void eraseString(std::string &str) {
+  char *p = const_cast<char *>(str.c_str());
+  while (*p) *p++ = '*';
 }
 
 TEST_CASE("std::string") {

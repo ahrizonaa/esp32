@@ -22,8 +22,8 @@
 
 #include "camera_pins.h"
 
-const char *ssid_Router     = "********";  //input your wifi name
-const char *password_Router = "********";  //input your wifi passwords
+const char *ssid_Router     = "PrettyLisa";  //input your wifi name
+const char *password_Router = "Kawaiisa69!";  //input your wifi passwords
 camera_config_t config;
 
 void startCameraServer();

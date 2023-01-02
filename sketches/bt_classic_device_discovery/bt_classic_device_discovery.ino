@@ -30,7 +30,7 @@ void setup() {
   payload["uuid"] = uuid.toCharArray();
 
   client.setCACert(ssl_ca_cert);
-  websocketConnected = client.connect("wss://king-prawn-app-4cz2q.ondigitalocean.app:443");
+  websocketConnected = client.connect("wss://esp32-web-services-fqmub.ondigitalocean.app:443");
   // client.setInsecure();
   // bool connected = client.connect("ws://192.168.1.129:8080");
 
@@ -55,8 +55,7 @@ void loop() {
     serializeJson(payload, jsonStr);
     client.send(jsonStr);
   }
-
-  while (true)
-  delay(100);
+  Serial.println(vibration);
+  delay(50);
 
 }

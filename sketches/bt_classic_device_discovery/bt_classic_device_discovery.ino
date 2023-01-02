@@ -4,7 +4,7 @@
 #include "WiFiCredentials.h"
 #include "UUID.h"
 
-using namespace websockets;
+using websockets::WebsocketsClient;
 
 WebsocketsClient client;
 
@@ -41,19 +41,22 @@ void setup() {
   }
   payload["chip_id"] = String(chipId);
 
+  pinMode(2, INPUT);
+
 }
 
 void loop() {
+  int vibration = digitalRead(2);
   ms = millis();
   if ((WiFi.status() == WL_CONNECTED) && websocketConnected) {
-    payload["datapoint"] =  "Message from ESP32";
     payload["current_ms"] = ms;
+    payload["vibration"] = vibration;
     char jsonStr[256];
     serializeJson(payload, jsonStr);
     client.send(jsonStr);
   }
 
   while (true)
-  delay(569);
+  delay(100);
 
 }

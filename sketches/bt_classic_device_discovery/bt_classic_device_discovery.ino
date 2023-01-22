@@ -10,6 +10,8 @@ WebsocketsClient client;
 
 StaticJsonDocument<256> payload;
 
+const int DIGITAL_IN = 15;
+
 UUID uuid;
 
 byte mac[6];
@@ -29,10 +31,10 @@ void setup() {
   payload["mac_addr"] =  String(mac[0],HEX) + ":" + String(mac[1],HEX) + ":" + String(mac[2],HEX) + ":" + String(mac[3],HEX) + ":" + String(mac[4],HEX) + ":" + String(mac[5],HEX);
   payload["uuid"] = uuid.toCharArray();
 
-  client.setCACert(ssl_ca_cert);
-  websocketConnected = client.connect("wss://esp32-web-services-fqmub.ondigitalocean.app:443");
-  // client.setInsecure();
-  // bool connected = client.connect("ws://192.168.1.129:8080");
+  //client.setCACert(ssl_ca_cert);
+  //websocketConnected = client.connect("wss://charmee-webservices-7sgqd.ondigitalocean.app:443");
+  client.setInsecure();
+  websocketConnected = client.connect("ws://192.168.1.129:8080");
 
   // get chipId
   uint32_t chipId = 0;
@@ -41,12 +43,12 @@ void setup() {
   }
   payload["chip_id"] = String(chipId);
 
-  pinMode(2, INPUT);
+  pinMode(DIGITAL_IN, INPUT);
 
 }
 
 void loop() {
-  int vibration = digitalRead(2);
+  int vibration = digitalRead(DIGITAL_IN);
   ms = millis();
   if ((WiFi.status() == WL_CONNECTED) && websocketConnected) {
     payload["current_ms"] = ms;
@@ -55,7 +57,6 @@ void loop() {
     serializeJson(payload, jsonStr);
     client.send(jsonStr);
   }
-  Serial.println(vibration);
-  delay(50);
+  delay(1000);
 
 }

@@ -31,10 +31,10 @@ void setup() {
   payload["mac_addr"] =  String(mac[0],HEX) + ":" + String(mac[1],HEX) + ":" + String(mac[2],HEX) + ":" + String(mac[3],HEX) + ":" + String(mac[4],HEX) + ":" + String(mac[5],HEX);
   payload["uuid"] = uuid.toCharArray();
 
-  //client.setCACert(ssl_ca_cert);
-  //websocketConnected = client.connect("wss://charmee-webservices-7sgqd.ondigitalocean.app:443");
-  client.setInsecure();
-  websocketConnected = client.connect("ws://192.168.1.129:8080");
+  client.setCACert(ssl_ca_cert);
+  websocketConnected = client.connect("wss://charmee-webservices-7sgqd.ondigitalocean.app:443");
+  // client.setInsecure();
+  // websocketConnected = client.connect("ws://192.168.1.129:8080");
 
   // get chipId
   uint32_t chipId = 0;
